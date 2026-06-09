@@ -24,7 +24,6 @@ class TodoApp:
 
         self.page.add(column_layout, self.task_list)
         self.refresh_tasks()
-        self.page.update()
 
     def refresh_tasks(self):
         tasks = self.service.get_tasks()
@@ -35,7 +34,14 @@ class TodoApp:
             self.task_list.controls.append(ft.Text("Задач пока нет"))
         else:
             for item in tasks:
-                self.task_list.controls.append(ft.Text(item.title))
+                self.task_list.controls.append(
+                    ft.Row(
+                        controls=[
+                            ft.Text(item.title),
+                            ft.IconButton(icon=ft.Icons.DELETE_FOREVER, on_click=lambda e: self.handle_delete_task(e, item.id))
+                        ]
+                    )
+                )
 
         self.page.update()
 
@@ -48,3 +54,6 @@ class TodoApp:
         self.task_input.value = ""
         self.refresh_tasks()
 
+    def handle_delete_task(self, e, task_id: str):
+        self.service.delete_task(task_id)
+        self.refresh_tasks()
