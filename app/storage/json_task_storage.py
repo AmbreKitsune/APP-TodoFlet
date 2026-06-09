@@ -17,9 +17,8 @@ class JsonTaskStorage:
                 json_data = json.load(file)
                 if not json_data:
                     return []
-                if not len(json_data):
-                    return []
         except json.decoder.JSONDecodeError:
+            print("The JSON file is broken.")
             return []
         
         data = []
@@ -29,5 +28,9 @@ class JsonTaskStorage:
         
 
     def save_tasks(self, tasks: list[Task])-> None:
+        data = []
+        for item in tasks:
+            data.append({"id": item.id, "title": item.title})
+
         with open(self.path_tasks, "w", encoding="UTF-8") as file:
-            json.dump(tasks, file, ensure_ascii=False, indent=4)
+            json.dump(data, file, ensure_ascii=False, indent=4)
