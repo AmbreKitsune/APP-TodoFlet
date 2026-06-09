@@ -17,6 +17,5 @@ def application(page: ft.Page):
     app.render()
 
 
-
 if __name__ == "__main__":
     ft.run(application)
