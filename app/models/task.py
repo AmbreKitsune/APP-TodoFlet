@@ -1,5 +1,6 @@
 from pydantic import BaseModel, field_validator
 
+
 class Task(BaseModel):
     id: str
     title: str
