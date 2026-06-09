@@ -5,7 +5,7 @@ from app.models.task import Task
 
 
 class JsonTaskStorage:
-    def __init__(self):
+    def __init__(self) -> None:
         self.path_tasks = Path("data/tasks.json")
 
     def load_tasks(self) -> list[Task]:

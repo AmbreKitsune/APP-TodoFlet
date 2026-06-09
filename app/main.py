@@ -1,6 +1,6 @@
 import flet as ft
 from app.models.task import Task
-from app.storage.json_task_storage import JsonTaskStorage
+from app.services.task_service import TaskService
 
 
 def application(page: ft.Page):
@@ -11,12 +11,11 @@ def application(page: ft.Page):
 
 
 if __name__ == "__main__":
-    storage = JsonTaskStorage()
-
-    data = []
-    data.append(Task(id="1", title=" Купить хлеб "))
-    data.append(Task(id="2", title="Купить    кофе "))
-    storage.save_tasks(data)
-    print(storage.load_tasks())
+    service = TaskService()
+    task1 = service.add_task(title="Купить хлеб")
+    task2 = service.add_task(title="Купить колу")
+    print(service.get_tasks())
+    service.delete_task(task_id=task1.id) 
+    print(service.get_tasks())
 
     ft.run(application)
