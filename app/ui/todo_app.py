@@ -17,7 +17,7 @@ class TodoApp:
             controls=[
                 ft.Text("Todo App"),
                 self.task_input,
-                ft.ElevatedButton("Добавить задачу"),
+                ft.ElevatedButton("Добавить задачу", on_click=self.handle_add_task),
                 self.counter_text
             ]
         )
@@ -38,4 +38,13 @@ class TodoApp:
                 self.task_list.controls.append(ft.Text(item.title))
 
         self.page.update()
+
+    def handle_add_task(self, e):
+        title = self.task_input.value.strip()
+        if not title:
+            return
+        
+        self.service.add_task(title)
+        self.task_input.value = ""
+        self.refresh_tasks()
 
