@@ -10,11 +10,13 @@ def application(page: ft.Page):
     page.window.width = 600
     page.window.height = 400
 
-
-if __name__ == "__main__":
     storage = JsonTaskStorage()
     service = TaskService(storage)
 
-    application = TodoApp(ft.Page, service)
+    app = TodoApp(page, service)
+    app.render()
 
-    ft.run(TodoApp(service))
+
+
+if __name__ == "__main__":
+    ft.run(application)
