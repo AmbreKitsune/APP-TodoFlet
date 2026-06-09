@@ -1,5 +1,7 @@
 import flet as ft
+
 from app.services.task_service import TaskService
+
 
 class TodoApp:
     def __init__(self, page: ft.Page, service: TaskService) -> None:
@@ -7,7 +9,21 @@ class TodoApp:
         self.service = service
 
     def render(self):
-        pass
+        column_layout = ft.Column(
+            controls=[
+                ft.Text("Todo App"),
+                ft.TextField("Введите текст"),
+                ft.ElevatedButton("Добавить задачу"),
+                ft.Text("Счётчик задачи: 0")
+            ]
+        )
+
+        task_list = ft.Column(
+            controls=[]
+        )
+
+        self.page.add(column_layout, task_list)
+        self.page.update()
 
     def refresh_tasks(self):
         pass
