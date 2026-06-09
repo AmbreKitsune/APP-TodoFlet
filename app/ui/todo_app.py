@@ -38,7 +38,7 @@ class TodoApp:
                     ft.Row(
                         controls=[
                             ft.Text(item.title),
-                            ft.IconButton(icon=ft.Icons.DELETE_FOREVER, on_click=lambda e: self.handle_delete_task(e, item.id))
+                            ft.IconButton(icon=ft.Icons.DELETE_FOREVER, on_click=lambda e, task_id=item.id: self.handle_delete_task(task_id))
                         ]
                     )
                 )
@@ -54,6 +54,6 @@ class TodoApp:
         self.task_input.value = ""
         self.refresh_tasks()
 
-    def handle_delete_task(self, e, task_id: str):
+    def handle_delete_task(self, task_id: str):
         self.service.delete_task(task_id)
         self.refresh_tasks()
