@@ -9,22 +9,20 @@ class TodoApp:
         self.service = service
 
     def render(self):
+        self.task_input = ft.TextField(label="Введите текст")
+        self.counter_text = ft.Text("Всего задач: 0")
+        self.task_list = ft.Column(controls=[ft.Text("Задач пока нет")])
+
         column_layout = ft.Column(
             controls=[
                 ft.Text("Todo App"),
-                ft.TextField(label="Введите текст"),
+                self.task_input,
                 ft.ElevatedButton("Добавить задачу"),
-                ft.Text("Счётчик задачи: 0")
+                self.counter_text
             ]
         )
 
-        task_list = ft.Column(
-            controls=[
-                ft.Text("Задач пока нет")
-            ]
-        )
-
-        self.page.add(column_layout, task_list)
+        self.page.add(column_layout, self.task_list)
         self.page.update()
 
     def refresh_tasks(self):
