@@ -1,4 +1,5 @@
 import flet as ft
+from app.ui.todo_app import TodoApp
 from app.services.task_service import TaskService
 from app.storage.json_task_storage import JsonTaskStorage
 
@@ -14,12 +15,6 @@ if __name__ == "__main__":
     storage = JsonTaskStorage()
     service = TaskService(storage)
 
-    task1 = service.add_task(title="Купить хлеб")
-    task2 = service.add_task(title="Купить колу")
+    application = TodoApp(ft.Page, service)
 
-    print(service.get_tasks())
-
-    service.delete_task(task_id=task1.id) 
-    print(service.get_tasks())
-
-    ft.run(application)
+    ft.run(TodoApp(service))

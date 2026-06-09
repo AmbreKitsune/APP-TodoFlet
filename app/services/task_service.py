@@ -1,10 +1,11 @@
 from uuid import uuid4
 
+from app.storage.json_task_storage import JsonTaskStorage
 from app.models.task import Task
 
 
 class TaskService:
-    def __init__(self, storage) -> None:
+    def __init__(self, storage: JsonTaskStorage) -> None:
         self.storage = storage
 
     def get_tasks(self) -> list[Task]:
