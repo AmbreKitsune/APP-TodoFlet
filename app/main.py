@@ -11,12 +11,12 @@ def application(page: ft.Page):
 
 
 if __name__ == "__main__":
-    jps = JsonTaskStorage()
+    storage = JsonTaskStorage()
 
     data = []
     data.append(Task(id="1", title=" Купить хлеб "))
     data.append(Task(id="2", title="Купить    кофе "))
-    jps.save_tasks(data)
-    print(jps.load_tasks())
+    storage.save_tasks(data)
+    print(storage.load_tasks())
 
     ft.run(application)

@@ -18,8 +18,7 @@ class JsonTaskStorage:
                 if not json_data:
                     return []
         except json.decoder.JSONDecodeError:
-            print("The JSON file is broken.")
-            return []
+            raise ValueError("Tasks JSON file is broken")
         
         data = []
         for item in json_data:
