@@ -23,7 +23,19 @@ class TodoApp:
         )
 
         self.page.add(column_layout, self.task_list)
+        self.refresh_tasks()
         self.page.update()
 
     def refresh_tasks(self):
-        pass
+        tasks = self.service.get_tasks()
+        self.task_list.controls.clear()
+        self.counter_text.value = f"Всего задач: {len(tasks)}"
+
+        if not tasks:
+            self.task_list.controls.append(ft.Text("Задач пока нет"))
+        else:
+            for item in tasks:
+                self.task_list.controls.append(ft.Text(item.title))
+
+        self.page.update()
+
