@@ -11,7 +11,7 @@ class JsonTaskStorage:
     def load_tasks(self) -> list[Task]:
         if not self.path_tasks.exists():
             return []
-        
+
         try:
             with open(self.path_tasks, "r", encoding="UTF-8") as file:
                 json_data = json.load(file)
@@ -19,12 +19,12 @@ class JsonTaskStorage:
                     return []
         except json.decoder.JSONDecodeError:
             raise ValueError("Tasks JSON file is broken")
-        
+
         data = []
         for item in json_data:
             data.append(Task(id=item['id'], title=item['title']))
         return data
-        
+
 
     def save_tasks(self, tasks: list[Task])-> None:
         data = []
