@@ -17,7 +17,7 @@ The task was simple, so we could add and delete tasks.
 
 The app can:
  - add new tasks;
- - delete;
+ - delete task;
  - save existing tasks to a JSON file.
 
 ---
@@ -78,16 +78,16 @@ P.S. If you're comfortable with Flet and want to build your project using `flet 
 
 # Errors ❌
 
-**Error:** The program/exe-file does not start or starts but crashes.
+**Error:** The program/exe-file does not start or starts but crashes.  
 **Solution:** Make sure the `_internal` folder is located next to the executable folder.
 
-**Error:** The save file does not remember and/or load tasks.
+**Error:** The save file does not remember and/or load tasks.  
 **Solution:** Do not install the portable version to `C:\Program Files`. Move the application to `%LOCALAPPDATA%\Ambre\TodoFletApp` or any other folder where the application has write access.
 
-**Error:** The task file is corrupted.
+**Error:** The task file is corrupted.  
 **Solution:** Deleting the tasks file in the root folder, and then `data/tasks.json`. While this is a rare error, and usually occurs only because the user has tampered with it, if you don't want to dig into `data/tasks.json`, it's best to just delete it.
 
-**Error:** Antivirus blocks the program or the program's launch.
+**Error:** Antivirus blocks the program or the program's launch.  
 **Solution:** It's also possible that your antivirus will complain about a given program, even if it's completely safe. In this case, I recommend verifying that the program isn't malicious and then adding it to the exception list in your antivirus.
 
 ---
