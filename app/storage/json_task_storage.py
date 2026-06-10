@@ -1,12 +1,27 @@
-from pathlib import Path
 import json
+import os
+import sys
+from pathlib import Path
 
 from app.models.task import Task
 
 
 class JsonTaskStorage:
     def __init__(self) -> None:
-        self.path_tasks = Path("data/tasks.json")
+        app_data_dir = os.getenv("FLET_APP_STORAGE_DATA")
+
+        if app_data_dir:
+            self.storage_dir = Path(app_data_dir)
+        else:
+            if getattr(sys, "frozen", False):
+                app_dir = Path(sys.executable).resolve().parent
+            else:
+                app_dir = Path.cwd()
+
+            self.storage_dir = app_dir / "localdata" / "data"
+
+        self.storage_dir.mkdir(parents=True, exist_ok=True)
+        self.path_tasks = self.storage_dir / "tasks.json"
 
     def load_tasks(self) -> list[Task]:
         if not self.path_tasks.exists():
@@ -27,9 +42,12 @@ class JsonTaskStorage:
 
 
     def save_tasks(self, tasks: list[Task])-> None:
-        data = []
-        for item in tasks:
-            data.append({"id": item.id, "title": item.title})
+        self.storage_dir.mkdir(parents=True, exist_ok=True)
+
+        data = [
+            {"id": item.id, "title": item.title}
+            for item in tasks
+        ]
 
         with open(self.path_tasks, "w", encoding="UTF-8") as file:
             json.dump(data, file, ensure_ascii=False, indent=4)

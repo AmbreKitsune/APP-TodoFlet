@@ -1,0 +1,17 @@
+[project]
+name = "todo-flet-app"
+version = "0.1.0"
+description = "Simple Flet todo app"
+requires-python = ">=3.12"
+dependencies = [
+    "flet",
+    "pydantic",
+]
+
+[tool.flet]
+product = "Todo Flet App"
+company = "AmbreKitsune"
+
+[tool.flet.app]
+path = "app"
+module = "main"

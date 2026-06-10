@@ -31,7 +31,9 @@ class TodoApp:
             weight=ft.FontWeight.BOLD
         )
         self.task_list = ft.Column(
-            controls=[ft.Text("Задач пока нет")],
+            controls=[
+                ft.Text("Задач пока нет")
+            ],
             scroll=ft.ScrollMode.AUTO
         )
 
@@ -78,7 +80,16 @@ class TodoApp:
         self.counter_text.value = f"Всего задач: {len(tasks)}"
 
         if not tasks:
-            self.task_list.controls.append(ft.Text("Задач пока нет"))
+            self.task_list.controls.append(
+                ft.Text(
+                    "Задач пока нет",
+                    expand=True,
+                    size=24,
+                    width=600,
+                    weight=ft.FontWeight.BOLD,
+                    text_align=ft.TextAlign.CENTER,
+                )
+            )
         else:
             for item in tasks:
                 self.task_list.controls.append(
