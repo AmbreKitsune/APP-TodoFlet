@@ -60,13 +60,13 @@ class TodoApp:
         )
 
         container_layout = ft.Column(
+            expand=True,
             controls=[
                 ft.Text("Todo App", size=24, weight=ft.FontWeight.BOLD),
                 input_row_layout,
                 self.counter_text,
                 container_list
-            ],
-            expand=True
+            ]
         )
 
         self.page.add(container_layout)
@@ -87,7 +87,6 @@ class TodoApp:
                             ft.Text(item.title, expand=True),
                             ft.IconButton(icon=ft.Icons.DELETE_FOREVER, on_click=lambda e, task_id=item.id: self.handle_delete_task(task_id))
                         ],
-                        scroll=ft.ScrollMode.AUTO,
                         alignment=ft.MainAxisAlignment.SPACE_BETWEEN
                     )
                 )
