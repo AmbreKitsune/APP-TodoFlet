@@ -10,7 +10,7 @@ class TodoApp:
 
     def render(self):
         self.task_input = ft.TextField(
-            hint_text="Новая задача...",
+            hint_text="New task...",
             hint_style=ft.TextStyle(
                 color="#7A7A7A",
                 size=16,
@@ -26,13 +26,13 @@ class TodoApp:
             focused_color="#FFFFFF",
         )
         self.counter_text = ft.Text(
-            "Всего задач: 0",
+            "Total tasks: 0",
             size=24,
             weight=ft.FontWeight.BOLD
         )
         self.task_list = ft.Column(
             controls=[
-                ft.Text("Задач пока нет")
+                ft.Text("No tasks yet...")
             ],
             scroll=ft.ScrollMode.AUTO
         )
@@ -77,12 +77,12 @@ class TodoApp:
     def refresh_tasks(self):
         tasks = self.service.get_tasks()
         self.task_list.controls.clear()
-        self.counter_text.value = f"Всего задач: {len(tasks)}"
+        self.counter_text.value = f"Total tasks: {len(tasks)}"
 
         if not tasks:
             self.task_list.controls.append(
                 ft.Text(
-                    "Задач пока нет",
+                    "No tasks yet...",
                     expand=True,
                     size=24,
                     width=600,
