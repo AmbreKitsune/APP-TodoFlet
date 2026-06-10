@@ -17,7 +17,7 @@ The task was simple, so we could add and delete tasks.
 
 The app can:
  - add new tasks;
- - delete task;
+ - delete tasks;
  - save existing tasks to a JSON file.
 
 ---
@@ -43,13 +43,13 @@ python -m venv .venv
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 
-При ошибке Execution Policy:
+If Execution Policy error occurs:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 #### Linux / macOS
 ```
-Если нет python-venv:
+If python-venv is missing:
 sudo apt install python3-venv
 
 python3 -m venv .venv
