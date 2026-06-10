@@ -1,4 +1,4 @@
-EN / [RU](https://github.com/AmbreKitsune/APP-TodoFlet/blob/main/README.ru.md)
+[EN](https://github.com/AmbreKitsune/APP-TodoFlet/blob/main/README.md) / RU
 
 <h1 align="center">📒TEST APP FOR TODO📖</h1>
 </br>
@@ -24,7 +24,7 @@ EN / [RU](https://github.com/AmbreKitsune/APP-TodoFlet/blob/main/README.ru.md)
 
 # Скриншот приложения 🗺️
 
-![Todo App](assets/screenshots/todo-app.png)
+![Todo App](https://github.com/AmbreKitsune/APP-TodoFlet/blob/main/assets/screenshots/image.png)
 
 ---
 
