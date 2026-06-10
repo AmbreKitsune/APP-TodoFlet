@@ -10,26 +10,30 @@ class TodoApp:
 
     def render(self):
         self.task_input = ft.TextField(
-            label="Новая задача",
+            hint_text="Новая задача...",
+            hint_style=ft.TextStyle(
+                color="#7A7A7A",
+                size=16,
+            ),
 
+            expand=True,
             filled=True,
             bgcolor="#C6D6C7",
             color="#212121",
 
             focused_bgcolor="#257316",
             focused_border_color="#257316",
-            focused_color="#257316", 
-
-            expand=True
-            )
+            focused_color="#FFFFFF",
+        )
         self.counter_text = ft.Text(
             "Всего задач: 0",
             size=24,
             weight=ft.FontWeight.BOLD
-            )
+        )
         self.task_list = ft.Column(
             controls=[ft.Text("Задач пока нет")],
-            )
+            scroll=ft.ScrollMode.AUTO
+        )
 
         input_row_layout = ft.Row(
             controls=[
@@ -47,10 +51,12 @@ class TodoApp:
 
         container_list = ft.Container(
             expand=True,
-            width=float("inf"),
             content=self.task_list,
+            width=650,
+            height=200,
             border=ft.Border.all(width=2, color="#FFFFFF"),
-            padding=10
+            margin=20,
+            padding=10,
         )
 
         container_layout = ft.Column(
@@ -59,7 +65,8 @@ class TodoApp:
                 input_row_layout,
                 self.counter_text,
                 container_list
-            ]
+            ],
+            expand=True
         )
 
         self.page.add(container_layout)
@@ -77,12 +84,11 @@ class TodoApp:
                 self.task_list.controls.append(
                     ft.Row(
                         controls=[
-                            ft.Text(item.title),
+                            ft.Text(item.title, expand=True),
                             ft.IconButton(icon=ft.Icons.DELETE_FOREVER, on_click=lambda e, task_id=item.id: self.handle_delete_task(task_id))
                         ],
                         scroll=ft.ScrollMode.AUTO,
-                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
-                        margin=10
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN
                     )
                 )
 
