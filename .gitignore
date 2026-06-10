@@ -1,0 +1,44 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Python build/package artifacts
+build/
+dist/
+release/
+*.egg-info/
+.eggs/
+*.spec
+
+# Flet / PyInstaller runtime data
+localdata/
+data/
+logs/
+cache/
+*.log
+
+# Test / lint / typecheck cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+
+# OS trash
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Env / secrets
+.env
+.env.*

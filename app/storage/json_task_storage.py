@@ -18,7 +18,7 @@ class JsonTaskStorage:
             else:
                 app_dir = Path.cwd()
 
-            self.storage_dir = app_dir / "localdata" / "data"
+            self.storage_dir = app_dir / "data"
 
         self.storage_dir.mkdir(parents=True, exist_ok=True)
         self.path_tasks = self.storage_dir / "tasks.json"
